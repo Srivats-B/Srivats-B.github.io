@@ -9,7 +9,7 @@ const links = ["home", "about", "blog"];
       links.map((link) => {
         return (
           <li>
-            <a href={link === "home" ? "/" : link}>
+            <a href={link === "home" ? "/" : `/${link}`}>
               {link.charAt(0).toUpperCase() + link.slice(1)}
             </a>
           </li>
