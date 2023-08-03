@@ -1,0 +1,26 @@
+---
+const links = ["home", "about", "blog"];
+---
+
+<nav>
+  <div class="logo">Srivats</div>
+  <ul class="nav-links">
+    {
+      links.map((link) => {
+        return (
+          <li>
+            <a href={link === "home" ? "/" : link}>
+              {link.charAt(0).toUpperCase() + link.slice(1)}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  .active {
+    background-color: aqua;
+  }
+</style>
