@@ -10,10 +10,7 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
 <Layout title="Srivats Balasubramanyam | CV">
   <div class="hero cv-hero">
     <div class="box">
-      <img
-        src="src/assets/srivats.jpg"
-        alt="A photograph of Srivats Balasubramanyam"
-      />
+      <img src="/srivats.jpg" alt="A photograph of Srivats Balasubramanyam" />
       <div class="content">
         <h1>Srivats Balasubramanyam</h1>
         <p>Instagram Influencee</p>
@@ -92,7 +89,7 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
   <style lang="css">
     .cv-hero {
       min-height: 80vh;
-      background-image: url(src/assets/images/pokemon.jpg);
+      background-image: url(/pokemon.jpg);
       background-color: rgb(79, 77, 80);
       background-blend-mode: overlay;
       background-position: center;
@@ -180,10 +177,6 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
       left: 50%;
     }
 
-    .exp-text > p {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
     .exp-text p:empty {
       display: none;
     }
