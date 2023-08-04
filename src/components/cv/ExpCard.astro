@@ -1,0 +1,81 @@
+---
+const { from, to, duration, designation, company } = Astro.props;
+---
+
+<div class="experience">
+  <div class="left">
+    <p class="date">
+      {from} &ndash; {to}
+    </p>
+    <p class="duration">({duration})</p>
+    <p class="desig">{designation}</p>
+  </div>
+  <div class="right">
+    <h3>{company}</h3>
+    <p>
+      <slot />
+    </p>
+  </div>
+</div>
+
+<style>
+  .experience {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .experience::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    aspect-ratio: 1 /1;
+    background-color: var(--accent-300);
+    border-radius: 50%;
+    left: 50%;
+    top: 45%;
+    transform: translateX(-50%);
+  }
+
+  .left {
+    text-align: end;
+    align-self: center;
+  }
+
+  .date {
+    font-weight: 900;
+    margin-bottom: 0.2em;
+  }
+
+  p .duration {
+    margin-bottom: 1rem;
+  }
+
+  p.desig {
+    font-style: italic;
+  }
+
+  .right h3 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  @media only screen and (max-width: 45rem) {
+    .experience {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 4rem;
+      background-color: white;
+    }
+    .experience::after {
+      top: 0;
+    }
+
+    .left {
+      text-align: center;
+      transform: translateY(65%);
+    }
+  }
+</style>

@@ -102,6 +102,7 @@ section {
 }
 body {
   line-height: 1;
+  font-family: "Lato", sans-serif;
 }
 ol,
 ul {
@@ -121,4 +122,15 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

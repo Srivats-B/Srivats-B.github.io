@@ -1,16 +1,16 @@
 ---
-const links = ["home", "about", "blog"];
+import navLinks from "../data/navLinks";
 ---
 
 <nav>
   <div class="logo">Srivats</div>
-  <ul class="nav-links">
+  <ul>
     {
-      links.map((link) => {
+      navLinks.map((link) => {
         return (
           <li>
-            <a href={link === "home" ? "/" : `/${link}`}>
-              {link.charAt(0).toUpperCase() + link.slice(1)}
+            <a href={link.path} data-navlink>
+              {link.name}
             </a>
           </li>
         );
@@ -20,7 +20,49 @@ const links = ["home", "about", "blog"];
 </nav>
 
 <style>
-  .active {
-    background-color: aqua;
+  nav {
+    display: flex;
+    align-items: center;
+    max-width: 60rem;
+    margin-inline: auto;
+    justify-content: space-between;
+    height: 5rem;
+    padding-inline: 1rem;
+  }
+  ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  li {
+    min-width: 5rem;
+  }
+
+  a {
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color 250ms ease-in-out;
+    font-size: 1.15rem;
+  }
+
+  a:hover {
+    color: var(--accent-300);
   }
 </style>
+
+<script>
+  const navLinks = document.querySelectorAll("[data-navlink]");
+
+  navLinks.forEach((link) => {
+    if (link.getAttribute("href") === window.location.pathname) {
+      link.setAttribute("aria-current", "current");
+    }
+
+    if (
+      window.location.pathname === "/cv" &&
+      link.getAttribute("href") === "/about"
+    ) {
+      link.setAttribute("aria-current", "current");
+    }
+  });
+</script>

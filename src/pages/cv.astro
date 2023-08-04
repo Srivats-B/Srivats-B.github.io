@@ -1,0 +1,216 @@
+---
+import { Icon } from "astro-icon";
+import ExpCard from "../components/cv/ExpCard.astro";
+import Layout from "../layouts/Layout.astro";
+import EduCard from "../components/cv/EduCard.astro";
+const allJobs = await Astro.glob("../content/cv/exp/*.md");
+const allEdu = await Astro.glob("../content/cv/edu/*.md");
+---
+
+<Layout title="Srivats Balasubramanyam | CV">
+  <div class="hero cv-hero">
+    <div class="box">
+      <img
+        src="src/assets/srivats.jpg"
+        alt="A photograph of Srivats Balasubramanyam"
+      />
+      <div class="content">
+        <h1>Srivats Balasubramanyam</h1>
+        <p>Instagram Influencee</p>
+        <h4 class="head">Phone:</h4>
+        <p>+91 7204404906</p>
+        <h4 class="head">Email:</h4>
+        <p>srivats.dm251078@greatlakes.edu.in</p>
+        <p>www.linkedin.com/in/srivatsb</p>
+        <h4 class="head">Address:</h4>
+        <p>Something</p>
+        <p>Something land</p>
+        <h4 class="head">Date of Birth:</h4>
+        <p>1st January 1851</p>
+      </div>
+    </div>
+  </div>
+  <div class="socials container">
+    <a href="#"><Icon name="mdi:linkedin" /></a>
+    <a href="#"><Icon name="mdi:twitter" /></a>
+    <a href="#"><Icon name="mdi:facebook" /></a>
+    <a href="#"><Icon name="mdi:instagram" /></a>
+    <a href="#"><Icon name="ic:baseline-discord" /></a>
+  </div>
+  <section class="summary container">
+    <h2 class="h2">Namaskara!<br />I am Srivats</h2>
+    <p>
+      I am pursuing a PGDM to enhance leadership and strategic thinking.
+      Functioned as an Analyst with expertise in Project Control. Skilled in
+      optimizing projects for efficiency and profitability, adept at project
+      planning, cost estimation, and risk assessment. Proficient in data
+      analysis and financial acumen. Effective communicator and team player with
+      a passion for driving success. Seeking opportunities to contribute to
+      corporate growth and lead high-performing teams.
+    </p>
+  </section>
+
+  <div class="container">
+    <h2 class="h2">Experience</h2>
+    <div class="experience-box">
+      {
+        allJobs.map((job) => {
+          return (
+            <ExpCard
+              from={job.frontmatter.from}
+              to={job.frontmatter.to}
+              duration={job.frontmatter.duration}
+              company={job.frontmatter.company}
+              designation={job.frontmatter.designation}
+            >
+              <div class="exp-text" set:html={job.compiledContent()} />
+            </ExpCard>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="h2">Education</h2>
+    <div class="experience-box">
+      {
+        allEdu.map((edu) => {
+          return (
+            <EduCard
+              year={edu.frontmatter.year}
+              degree={edu.frontmatter.degree}
+              institute={edu.frontmatter.institute}
+              grade={edu.frontmatter.grade}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <style lang="css">
+    .cv-hero {
+      min-height: 80vh;
+      background-image: url(src/assets/images/pokemon.jpg);
+      background-color: rgb(79, 77, 80);
+      background-blend-mode: overlay;
+      background-position: center;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+
+    .box {
+      background-color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      align-items: center;
+      /* min-height: 510px; */
+
+      max-width: 75rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 10vw, 3rem);
+      width: min-content;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .box > div > * {
+      margin-bottom: 0;
+    }
+
+    h4.head {
+      font-family: "Bebas Neue", sans-serif;
+      margin-top: 0.75em;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .box p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      display: block;
+      overflow-wrap: break-word;
+    }
+
+    .socials {
+      background-color: var(--accent-700);
+      padding: 2rem;
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+      transform: translateY(-50%);
+    }
+
+    .socials [astro-icon] {
+      width: 30px;
+      color: white;
+      transition: all 250ms ease-in;
+    }
+
+    .socials [astro-icon]:hover {
+      width: 30px;
+      color: var(--accent-300);
+    }
+
+    .summary {
+      padding-block: 1.5rem 2.5rem;
+    }
+
+    .summary p {
+      margin-top: 1rem;
+    }
+
+    .experience-box {
+      position: relative;
+    }
+
+    .experience-box::before {
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 1px;
+      background-color: var(--accent-100);
+      left: 50%;
+    }
+
+    .exp-text > p {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .exp-text p:empty {
+      display: none;
+    }
+
+    .h2 {
+      text-align: center;
+    }
+    @media only screen and (max-width: 55rem) {
+      .box {
+        grid-template-columns: 1fr;
+        width: 100%;
+      }
+
+      h1 {
+        margin-right: 0;
+      }
+      .cv-hero {
+        padding: 1rem;
+      }
+
+      .content {
+        padding: 1rem;
+      }
+      .socials {
+        margin-top: 3rem;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</Layout>

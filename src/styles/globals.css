@@ -1,0 +1,63 @@
+html {
+  --gray-100: #ececee;
+  --gray-300: #ececee;
+  --gray-400: #54545e;
+  --gray-700: #242424;
+  --accent-100: #d9e7f4;
+  --accent-300: #8da1be;
+  --accent-400: #536c92;
+  --accent-700: #1d2d47;
+  --error: red;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Bebas Neue", sans-serif;
+  color: var(--accent-700);
+}
+
+[aria-current="current"] {
+  color: var(--accent-400);
+  font-weight: 900;
+}
+.container {
+  max-width: 60rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.hero {
+  min-height: 100vh;
+}
+
+.h1 {
+  font-size: 5rem;
+  margin-top: 0.8em;
+}
+
+.h2 {
+  font-size: 4rem;
+  margin-top: 0.8em;
+}
+
+.h3 {
+  font-size: 3rem;
+  margin-top: 0.8em;
+}
+
+.h4 {
+  font-size: 2rem;
+  margin-top: 0.8em;
+}
+
+p {
+  font-size: 1.25rem;
+  margin-bottom: 1em;
+}
+
+.exp-text > p {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}

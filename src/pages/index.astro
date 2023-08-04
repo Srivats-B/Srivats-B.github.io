@@ -2,8 +2,25 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Srivats Balasubramany">
-  <main>
-    <h1>Hello World</h1>
+<Layout title="Srivats Balasubramanyam">
+  <main class="container">
+    <h1>Hi! <br /> I am <span>Srivats</span></h1>
+    <a href="/cv">My CV</a>
   </main>
 </Layout>
+
+<style>
+  main {
+    min-height: 100vh;
+    display: grid;
+    align-items: center;
+  }
+  h1 {
+    font-size: clamp(5rem, 10vw, 14rem);
+    width: min-content;
+  }
+
+  h1 span {
+    color: goldenrod;
+  }
+</style>
