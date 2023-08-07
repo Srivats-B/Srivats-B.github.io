@@ -61,3 +61,24 @@ p {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
+
+.grid {
+  display: grid;
+}
+
+.two-even {
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.text-c {
+  text-align: center;
+}
+
+.gap-l {
+  gap: 3rem;
+}
+
+.tab-window ul li {
+  margin-bottom: 0.5em;
+}

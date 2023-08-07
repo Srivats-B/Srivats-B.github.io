@@ -3,6 +3,7 @@ import { Icon } from "astro-icon";
 import ExpCard from "../components/cv/ExpCard.astro";
 import Layout from "../layouts/Layout.astro";
 import EduCard from "../components/cv/EduCard.astro";
+import SkillsTab from "../components/cv/SkillsTab.astro";
 const allJobs = await Astro.glob("../content/cv/exp/*.md");
 const allEdu = await Astro.glob("../content/cv/edu/*.md");
 ---
@@ -47,7 +48,7 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
     </p>
   </section>
 
-  <div class="container">
+  <section class="container">
     <h2 class="h2">Experience</h2>
     <div class="experience-box">
       {
@@ -66,9 +67,9 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
         })
       }
     </div>
-  </div>
+  </section>
 
-  <div class="container">
+  <section class="container">
     <h2 class="h2">Education</h2>
     <div class="experience-box">
       {
@@ -84,126 +85,179 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
         })
       }
     </div>
-  </div>
+  </section>
+  <section class="container grid two-even gap-l project-container">
+    <div>
+      <h2 class="h3 text-c">Academic/Corporate Projects</h2>
+      <ul class="projects">
+        <li>
+          Ramanagara Industrial Visit Report: Included visits to businesses
+          including Surya Handicraft, Sula Vineyards Pvt. Ltd., Karnataka
+          Janapada Parishat
+        </li>
+        <li>EFA Employee Experience, Deloitte USI</li>
+        <li>West EFA USI Social Event Organizer, Deloitte USI</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="h3 text-c">Achievements</h2>
+      <ul class="projects">
+        <li>Spot Award, 2023 (EFA. Deloitte)</li>
+        <li>Spot Award, 2022 (EFA. Deloitte)</li>
+        <li>Best Outgoing Student, 2020 (Seshadripuram College)</li>
+        <li>President of Student Council, Seshadripuram College</li>
+        <li>
+          President of Lakshya, Commerce and Management Forum, Seshadripuram
+          College
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="container skills-container">
+    <h2 class="h2">Skills and Other Activities</h2>
+    <!-- <SkillsTab /> -->
+  </section>
+</Layout>
+<style lang="css">
+  section {
+    border-top: 1px solid var(--accent-300);
+    margin-top: 3rem;
+  }
+  .cv-hero {
+    min-height: 80vh;
+    background-image: url(/pokemon.jpg);
+    background-color: rgb(79, 77, 80);
+    background-blend-mode: overlay;
+    background-position: center;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+  }
 
-  <style lang="css">
-    .cv-hero {
-      min-height: 80vh;
-      background-image: url(/pokemon.jpg);
-      background-color: rgb(79, 77, 80);
-      background-blend-mode: overlay;
-      background-position: center;
-      display: grid;
-      place-items: center;
-      padding: 2rem;
-    }
+  .box {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
+    align-items: center;
+    /* min-height: 510px; */
+
+    max-width: 75rem;
+  }
+
+  h1.cv-h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    width: min-content;
+  }
+
+  .content {
+    padding: 2rem;
+  }
+
+  .box > div > * {
+    margin-bottom: 0;
+  }
+
+  h4.head {
+    font-family: "Bebas Neue", sans-serif;
+    margin-top: 0.75em;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .box p {
+    font-size: 1.2rem;
+    font-weight: 300;
+    display: block;
+    overflow-wrap: break-word;
+  }
+
+  .socials {
+    background-color: var(--accent-700);
+    padding: 2rem;
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    transform: translateY(-50%);
+  }
+
+  .socials [astro-icon] {
+    width: 30px;
+    color: white;
+    transition: all 250ms ease-in;
+  }
+
+  .socials [astro-icon]:hover {
+    width: 30px;
+    color: var(--accent-300);
+  }
+
+  .summary {
+    padding-block: 1.5rem 2.5rem;
+  }
+
+  .summary p {
+    margin-top: 1rem;
+  }
+
+  .experience-box {
+    position: relative;
+  }
+
+  .experience-box::before {
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 1px;
+    background-color: var(--accent-100);
+    left: 50%;
+  }
+
+  .exp-text p:empty {
+    display: none;
+  }
+
+  .h2 {
+    text-align: center;
+  }
+
+  .project-container {
+    /* align-items: flex-end; */
+    margin-top: 5rem;
+  }
+
+  .project-container h2 {
+    margin-bottom: 1rem;
+  }
+
+  .projects li {
+    list-style: disc;
+    margin-left: 1rem;
+    margin-bottom: 0.5em;
+  }
+  @media only screen and (max-width: 55rem) {
     .box {
-      background-color: white;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-
-      align-items: center;
-      /* min-height: 510px; */
-
-      max-width: 75rem;
+      grid-template-columns: 1fr;
+      width: 100%;
     }
 
-    h1.cv-h1 {
-      font-size: clamp(2rem, 10vw, 3rem);
-      width: min-content;
+    h1 {
+      margin-right: 0;
+    }
+    .cv-hero {
+      padding: 1rem;
     }
 
     .content {
-      padding: 2rem;
+      padding: 1rem;
     }
-
-    .box > div > * {
-      margin-bottom: 0;
-    }
-
-    h4.head {
-      font-family: "Bebas Neue", sans-serif;
-      margin-top: 0.75em;
-      font-size: 1.2rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .box p {
-      font-size: 1.2rem;
-      font-weight: 300;
-      display: block;
-      overflow-wrap: break-word;
-    }
-
     .socials {
-      background-color: var(--accent-700);
-      padding: 2rem;
-      display: flex;
-      gap: 4rem;
-      justify-content: center;
-      transform: translateY(-50%);
+      margin-top: 3rem;
+      gap: 1.5rem;
     }
 
-    .socials [astro-icon] {
-      width: 30px;
-      color: white;
-      transition: all 250ms ease-in;
+    .project-container {
+      grid-template-columns: 1fr;
     }
-
-    .socials [astro-icon]:hover {
-      width: 30px;
-      color: var(--accent-300);
-    }
-
-    .summary {
-      padding-block: 1.5rem 2.5rem;
-    }
-
-    .summary p {
-      margin-top: 1rem;
-    }
-
-    .experience-box {
-      position: relative;
-    }
-
-    .experience-box::before {
-      content: "";
-      height: 100%;
-      position: absolute;
-      width: 1px;
-      background-color: var(--accent-100);
-      left: 50%;
-    }
-
-    .exp-text p:empty {
-      display: none;
-    }
-
-    .h2 {
-      text-align: center;
-    }
-    @media only screen and (max-width: 55rem) {
-      .box {
-        grid-template-columns: 1fr;
-        width: 100%;
-      }
-
-      h1 {
-        margin-right: 0;
-      }
-      .cv-hero {
-        padding: 1rem;
-      }
-
-      .content {
-        padding: 1rem;
-      }
-      .socials {
-        margin-top: 3rem;
-        gap: 1.5rem;
-      }
-    }
-  </style>
-</Layout>
+  }
+</style>

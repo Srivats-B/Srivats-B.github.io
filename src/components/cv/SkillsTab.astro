@@ -1,0 +1,82 @@
+---
+const allSkillsData = await Astro.glob("../../content/cv/skills/*.md");
+---
+
+<div class="tabs">
+  {
+    allSkillsData.map((skill) => {
+      return (
+        <h4
+          class:list={[
+            "skill-tab",
+            skill.frontmatter.title === "Key Skills" && "active-tab",
+          ]}
+        >
+          {skill.frontmatter.title}
+        </h4>
+      );
+    })
+  }
+</div>
+{
+  allSkillsData.map((skill) => {
+    return (
+      <div
+        class:list={skill.frontmatter.title === "Key Skills" && "active-window"}
+        class="tab-window"
+      >
+        <div set:html={skill.compiledContent()} />
+      </div>
+    );
+  })
+}
+
+<style>
+  .tabs {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 1rem;
+    width: 95%;
+    margin-inline: auto;
+    margin-top: 2rem;
+    height: 3rem;
+    cursor: pointer;
+  }
+
+  .tabs h4 {
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--gray-100);
+    color: var(--accent-700);
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 0;
+  }
+  h4.active-tab {
+    background-color: var(--accent-700);
+    color: var(--gray-100);
+  }
+
+  .tab-window {
+    background-color: var(--accent-700);
+    color: var(--gray-100);
+    margin-top: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  .tab-window ul li {
+    margin-bottom: 0.5em;
+  }
+
+  .active-window {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll(".skill-tab");
+</script>

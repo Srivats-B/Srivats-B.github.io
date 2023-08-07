@@ -32,6 +32,7 @@ import navLinks from "../data/navLinks";
   ul {
     display: flex;
     gap: 2rem;
+    list-style: none;
   }
 
   li {
@@ -52,15 +53,16 @@ import navLinks from "../data/navLinks";
 
 <script>
   const navLinks = document.querySelectorAll("[data-navlink]");
+  const pathName = window.location.pathname;
 
   navLinks.forEach((link) => {
-    if (link.getAttribute("href") === window.location.pathname) {
+    if (link.getAttribute("href").includes(pathName)) {
       link.setAttribute("aria-current", "current");
     }
 
     if (
-      window.location.pathname === "/cv" &&
-      link.getAttribute("href") === "/about"
+      pathName.includes("/cv") &&
+      link.getAttribute("href").includes("/about")
     ) {
       link.setAttribute("aria-current", "current");
     }
