@@ -53,18 +53,31 @@ import navLinks from "../data/navLinks";
 
 <script>
   const navLinks = document.querySelectorAll("[data-navlink]");
+
   const pathName = window.location.pathname;
+  console.log(navLinks);
 
-  navLinks.forEach((link) => {
-    if (link.getAttribute("href").includes(pathName)) {
-      link.setAttribute("aria-current", "current");
-    }
+  if (pathName === "/") {
+    console.log("inside hoem");
+    navLinks.forEach((link: Element) => {
+      if (link.getAttribute("href") === "/") {
+        link.setAttribute("aria-current", "current");
+      }
+    });
+  } else {
+    console.log("outside hoem");
 
-    if (
-      pathName.includes("/cv") &&
-      link.getAttribute("href").includes("/about")
-    ) {
-      link.setAttribute("aria-current", "current");
-    }
-  });
+    navLinks.forEach((link) => {
+      if (link.getAttribute("href").includes(pathName)) {
+        link.setAttribute("aria-current", "current");
+      }
+
+      if (
+        pathName.includes("/cv") &&
+        link.getAttribute("href").includes("/about")
+      ) {
+        link.setAttribute("aria-current", "current");
+      }
+    });
+  }
 </script>
