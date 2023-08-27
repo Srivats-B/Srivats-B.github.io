@@ -1,84 +1,43 @@
 ---
-const allSkillsData = await Astro.glob("../../content/cv/skills/*.md");
+const allSkills = await Astro.glob("../../content/cv/skills/*.md");
 ---
 
-<div class="tabs">
+<div class="card-container container">
   {
-    allSkillsData.map((skill) => {
+    allSkills.map((skill) => {
       return (
-        <h4
-          class:list={[
-            "skill-tab",
-            skill.frontmatter.title === "Key Skills" && "active-tab",
-          ]}
-        >
-          {skill.frontmatter.title}
-        </h4>
+        <div class="card">
+          <h3 class="h4 text-c">{skill.frontmatter.title}</h3>
+          <div set:html={skill.compiledContent()} />
+        </div>
       );
     })
   }
 </div>
-{
-  allSkillsData.map((skill) => {
-    return (
-      <div
-        class:list={skill.frontmatter.title === "Key Skills" && "active-window"}
-        class="tab-window"
-      >
-        <div set:html={skill.compiledContent()} />
-      </div>
-    );
-  })
-}
 
 <style>
-  .tabs {
+  .card-container {
     display: flex;
-    justify-content: center;
-    align-items: end;
+    flex-wrap: wrap;
     gap: 1rem;
-    width: 95%;
-    margin-inline: auto;
-    margin-top: 2rem;
-    height: 3rem;
-    cursor: pointer;
+    justify-content: center;
+    margin-block: 2rem;
   }
 
-  .tabs h4 {
-    font-size: 1.25rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--gray-100);
-    color: var(--accent-700);
-    border-radius: 20px 20px 0 0;
-    margin-bottom: 0;
-  }
-  h4.active-tab {
-    background-color: var(--accent-700);
-    color: var(--gray-100);
+  .card {
+    width: 22rem;
+    border: 1px solid var(--accent-400);
+    padding: 2rem 2.5rem;
+    background-color: white;
+    box-shadow: 5px 5px 0px 0px var(--accent-400);
   }
 
-  .tab-window {
-    background-color: var(--accent-700);
-    color: var(--gray-100);
+  .card .h4 {
     margin-top: 0;
-    display: grid;
-    place-items: center;
-    opacity: 0;
-    padding: 2rem;
-    border-radius: 10px;
+    margin-bottom: 1rem;
   }
 
-  .tab-window ul li {
-    margin-bottom: 0.5em;
-  }
-
-  .active-window {
-    opacity: 1;
+  li {
+    margin-left: 3rem;
   }
 </style>
-
-<script>
-  const tabs = document.querySelectorAll(".skill-tab");
-
-  tabs.addEventListener();
-</script>
