@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon";
+import { Image } from "astro:assets";
+import Photo from "../assets/images/srivats.png"
 import ExpCard from "../components/cv/ExpCard.astro";
 import Layout from "../layouts/Layout.astro";
 import EduCard from "../components/cv/EduCard.astro";
@@ -11,7 +13,7 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
 <Layout title="Srivats Balasubramanyam | CV">
   <div class="hero cv-hero">
     <div class="box">
-      <img src="/srivats.png" alt="A photograph of Srivats Balasubramanyam" />
+      <Image src={Photo} alt="A photograph of Srivats Balasubramanyam" />
       <div class="content">
         <h1 class="cv-h1">Srivats Balasubramanyam</h1>
         <p>Instagram Influencee</p>
@@ -20,17 +22,28 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
         <h4 class="head">Email:</h4>
         <p>srivats.dm251078@greatlakes.edu.in</p>
         <p>www.linkedin.com/in/srivatsb</p>
-        <h4 class="head">Address:</h4>
-        <p>Something</p>
-        <p>Something land</p>
+        <h4 class="head">Residence:</h4>
+        <p>Yelahanka, Bengaluru,</p>
+        <p>Karnataka, India.</p>
         <h4 class="head">Date of Birth:</h4>
-        <p>1st January 1851</p>
+        <p>15th October, 1998</p>
       </div>
     </div>
   </div>
   <div class="socials container">
     <a href="#"><Icon name="mdi:linkedin" /></a>
-    <a href="#"><Icon name="mdi:twitter" /></a>
+    <a href="#"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        ><path
+          fill="currentColor"
+          d="M18.205 2.25h3.308l-7.227 8.26l8.502 11.24H16.13l-5.214-6.817L4.95 21.75H1.64l7.73-8.835L1.215 2.25H8.04l4.713 6.231l5.45-6.231Zm-1.161 17.52h1.833L7.045 4.126H5.078L17.044 19.77Z"
+        ></path></svg
+      ></a
+    >
     <a href="#"><Icon name="mdi:facebook" /></a>
     <a href="#"><Icon name="mdi:instagram" /></a>
     <a href="#"><Icon name="ic:baseline-discord" /></a>
@@ -129,10 +142,11 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
   }
   .cv-hero {
     min-height: 80vh;
-    background-image: url(/pokemon.jpg);
+    background-image: url('../assets/images/cv-bg.jpg');
     background-color: rgb(79, 77, 80);
     background-blend-mode: overlay;
     background-position: center;
+    background-size: cover;
     display: grid;
     place-items: center;
     padding: 2rem;
@@ -147,6 +161,10 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
     /* min-height: 510px; */
 
     max-width: 75rem;
+  }
+
+  .box img {
+    height: 100%;
   }
 
   h1.cv-h1 {
@@ -189,6 +207,15 @@ const allEdu = await Astro.glob("../content/cv/edu/*.md");
     width: 30px;
     color: white;
     transition: all 250ms ease-in;
+  }
+  .socials svg path {
+    fill: white;
+    transition: all 250ms ease-in;
+    width: 26px;
+  }
+
+  .socials svg:hover path {
+    fill: var(--accent-300);
   }
 
   .socials [astro-icon]:hover {

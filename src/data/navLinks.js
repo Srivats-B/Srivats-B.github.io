@@ -1,15 +1,15 @@
 const navLinks = [
   {
-    name: "Home",
-    path: "/",
+    name: "Blog",
+    path: "/blog",
+  },
+  {
+    name: "Photography",
+    path: "/photography",
   },
   {
     name: "About",
     path: "/about",
-  },
-  {
-    name: "Blog",
-    path: "/blog",
   },
 ];
 

@@ -1,15 +1,23 @@
 ---
 import navLinks from "../data/navLinks";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1)
+
+
+console.log(currentPath)
 ---
 
 <nav>
-  <div class="logo">Srivats</div>
+  <a href="/">
+    <div class="logo">Srivats</div>
+  </a>
   <ul>
     {
       navLinks.map((link) => {
         return (
           <li>
-            <a href={link.path} data-navlink>
+            <a href={link.path} data-navlink class={currentPath.startsWith(link.path.slice(1)) ? "active" : ""}>
               {link.name}
             </a>
           </li>
@@ -31,12 +39,14 @@ import navLinks from "../data/navLinks";
   }
   ul {
     display: flex;
-    gap: 2rem;
+    justify-content: space-evenly;
     list-style: none;
+    width: 400px;
   }
 
   li {
     min-width: 5rem;
+    text-align: center;
   }
 
   a {
@@ -44,40 +54,14 @@ import navLinks from "../data/navLinks";
     text-decoration: none;
     transition: color 250ms ease-in-out;
     font-size: 1.15rem;
+    
   }
 
   a:hover {
     color: var(--accent-300);
   }
-</style>
 
-<script>
-  const navLinks = document.querySelectorAll("[data-navlink]");
-
-  const pathName = window.location.pathname;
-  console.log(navLinks);
-
-  if (pathName === "/") {
-    console.log("inside hoem");
-    navLinks.forEach((link: Element) => {
-      if (link.getAttribute("href") === "/") {
-        link.setAttribute("aria-current", "current");
-      }
-    });
-  } else {
-    console.log("outside hoem");
-
-    navLinks.forEach((link) => {
-      if (link.getAttribute("href").includes(pathName)) {
-        link.setAttribute("aria-current", "current");
-      }
-
-      if (
-        pathName.includes("/cv") &&
-        link.getAttribute("href").includes("/about")
-      ) {
-        link.setAttribute("aria-current", "current");
-      }
-    });
+  .active  {
+    font-weight: 700;
   }
-</script>
+</style>

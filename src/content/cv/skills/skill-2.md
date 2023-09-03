@@ -2,5 +2,5 @@
 title: Technical Skills
 ---
 
-- Advanced Excel
+- Intermediate Excel
 - PowerPoint
