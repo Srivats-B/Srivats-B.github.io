@@ -5,7 +5,8 @@ duration: 12 months
 company: Deloitte USI
 designation: Analyst, EFA
 ---
+Streamlined project revenue of approximately US$93 million.
 
-Trained lateral hires and campus hires with business process and functions for larger support system.
+Trained lateral hires and campus hires with business processes and functions for a larger support system.
 
-Created functional baselines for larger team to optimize workload.
+Directed the creation of functional baselines for the larger team to optimize the workload.
