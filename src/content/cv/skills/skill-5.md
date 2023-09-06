@@ -2,6 +2,7 @@
 title: Extra-Curricular Activities
 ---
 
-- Volleyball
-- Karaoke
-- Gaming
+- Placement Committee
+- Employee Experience Committee (for BLR EFA and BLR West EFA)
+- Social Event Organizer
+- Management Fest Organizer

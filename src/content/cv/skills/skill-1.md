@@ -2,7 +2,6 @@
 title: Key Skills
 ---
 
-- Financial Analysis
-- Data Management
-- Cost Control
-- Risk Management
+- Leadership Skills
+- Keen Observer
+- Risk Mitigation

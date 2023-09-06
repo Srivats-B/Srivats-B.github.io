@@ -2,5 +2,6 @@
 title: Technical Skills
 ---
 
-- Intermediate Excel
-- PowerPoint
+- MS Office
+- Financial Analysis
+- Cost Control
