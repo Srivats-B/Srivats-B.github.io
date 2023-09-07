@@ -15,9 +15,9 @@ const animatedShows = allPrograms.filter(
 ---
 
 <Layout title="My Favourite Films and TV Shows">
-  <div class="container">
+  <div class="container-wide">
     <h1 class="h1">My Favourite Shows</h1>
-    <p>
+    <p class="intro-text">
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam ut id
       aut? Obcaecati amet hic odit sapiente id quia distinctio totam dolores
       voluptate cupiditate ipsa ex minima, enim molestias, perspiciatis qui at?
@@ -25,7 +25,7 @@ const animatedShows = allPrograms.filter(
       itaque quia omnis iusto voluptates, placeat ratione maiores sint.
     </p>
 
-    <h2 class="h2">TV Shows</h2>
+    <h2 class="h2 text-c">TV Shows</h2>
 
     <div class="card-container">
       {
@@ -43,7 +43,7 @@ const animatedShows = allPrograms.filter(
       }
     </div>
 
-    <h2 class="h2">Anime</h2>
+    <h2 class="h2 text-c">Anime</h2>
     <div class="card-container">
       {
         anime.map((show) => {
@@ -60,7 +60,7 @@ const animatedShows = allPrograms.filter(
       }
     </div>
 
-    <h2 class="h2">Animated Shows</h2>
+    <h2 class="h2 text-c">Animated Shows</h2>
     <div class="card-container">
       {
         animatedShows.map((show) => {
@@ -82,7 +82,11 @@ const animatedShows = allPrograms.filter(
     .card-container {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 1rem;
+    }
+    .intro-text {
+      max-width: 80ch;
     }
   </style>
 </Layout>

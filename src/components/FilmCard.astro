@@ -18,6 +18,14 @@ const { url, title, art } = Astro.props;
 
   .card {
     width: 15rem;
+    transition: background-color 250ms ease-in-out;
+  }
+
+  .card:hover {
+    outline: 2px solid var(--gray-300);
+    background-color: var(--gray-100);
+    outline-offset: 5px;
+    border-radius: 2px;
   }
 
   img {
