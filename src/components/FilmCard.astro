@@ -1,0 +1,31 @@
+---
+const { url, title, art } = Astro.props;
+---
+
+<div class="card">
+  <a href={url}>
+    <img src={`/films/${art}`} alt="" transition:name={`${art}`} />
+    <h3 class="h4" transition:name={`${title}`}>
+      {title}
+    </h3>
+  </a>
+</div>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  .card {
+    width: 15rem;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .h4 {
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+</style>

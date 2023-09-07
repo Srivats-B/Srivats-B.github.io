@@ -1,0 +1,42 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+const { title, art } = frontmatter;
+---
+
+<Layout title={`Srivats | Films & TV | ${title}`}>
+  <div class="film-grid">
+    <img src={`/films/${art}`} alt="" transition:name={`${art}`} />
+    <div class="content">
+      <h1 class="h1" transition:name={`${title}`}>{title}</h1>
+
+      <div class="desc">
+        <slot />
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .film-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100%;
+    height: calc(100vh - 5rem);
+  }
+
+  img {
+    object-fit: contain;
+    overflow: hidden;
+    height: calc(100vh - 5rem);
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .desc {
+    overflow: auto;
+    padding-block: 1rem;
+  }
+</style>

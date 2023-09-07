@@ -1,41 +1,38 @@
 ---
-import navLinks from "../data/navLinks";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1)
-
-
-console.log(currentPath)
 ---
 
 <nav>
   <a href="/">
     <div class="logo">Srivats</div>
   </a>
-  <ul>
-    {
-      navLinks.map((link) => {
-        return (
-          <li>
-            <a href={link.path} data-navlink class={currentPath.startsWith(link.path.slice(1)) ? "active" : ""}>
-              {link.name}
-            </a>
-          </li>
-        );
-      })
-    }
-  </ul>
+  <ul class="links">
+   
+    <li><a href="/" class={pathname === "/" ? "active" : ""} >Home</a></li>
+    <li><a href="/blog" class={currentPath.startsWith("blog") ? "active" : ""} >Blog</a></li>
+    <li><a href="/photography" class={currentPath.startsWith("photography") ? "active" : ""} >Photography</a></li>
+    <li><a href="/about" class={currentPath.startsWith("about") ? "active" : ""} >About</a></li>
+  </ul> 
+  
 </nav>
 
 <style>
   nav {
+    position: fixed;
+    z-index: 900;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
-    max-width: 60rem;
+    /* max-width: 85rem; */
     margin-inline: auto;
     justify-content: space-between;
     height: 5rem;
     padding-inline: 1rem;
+    background-color: var(--accent-700);
   }
   ul {
     display: flex;
@@ -45,23 +42,37 @@ console.log(currentPath)
   }
 
   li {
-    min-width: 5rem;
+    padding: 1rem;
     text-align: center;
+    position: relative;
+    
+   
   }
 
-  a {
-    color: var(--gray-400);
+  .links a {
+    background-color: var(--accent-700);
+    color: var(--gray-100);
     text-decoration: none;
     transition: color 250ms ease-in-out;
     font-size: 1.15rem;
     
+    margin: auto;
+    
+    
   }
 
-  a:hover {
-    color: var(--accent-300);
-  }
 
-  .active  {
-    font-weight: 700;
+
+ 
+  .links a:hover::after,
+  .links li > .active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -15px;
+    height: 7px;
+    background-color: var(--accent-300);
+
   }
 </style>
