@@ -4,8 +4,12 @@ title: Haikyu!!
 art: haikyu.jpg
 type: Anime
 language: Japanese
-hasEnded: true
-haveIfinishedWatching: true
+hasEnded: false
+tags: [Action, Violence]
+haveIFinishedWatching: false
+isWishList: false
+finishedOn: 2023-09-01
+imdb: https://www.imdb.com/title/tt3398540/
 ---
 
 ### My Thoughts

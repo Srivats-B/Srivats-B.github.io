@@ -1,42 +1,183 @@
 ---
 import Layout from "./Layout.astro";
 const { frontmatter } = Astro.props;
-const { title, art } = frontmatter;
+const { title, art, tags, imdb, showType, hasEnded, haveIFinishedWatching } =
+  frontmatter;
 ---
 
 <Layout title={`Srivats | Films & TV | ${title}`}>
   <div class="film-grid">
-    <img src={`/films/${art}`} alt="" transition:name={`${art}`} />
+    <div class="image">
+      <img src={`/films/${art}`} alt="" transition:name={`${art}`} />
+      <button onclick="
+      history.back()
+      "
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          ><path
+            fill="currentColor"
+            d="M17.51 3.87L15.73 2.1L5.84 12l9.9 9.9l1.77-1.77L9.38 12l8.13-8.13z"
+          ></path></svg
+        >
+      </button>
+    </div>
     <div class="content">
-      <h1 class="h1" transition:name={`${title}`}>{title}</h1>
+      <h1 class="h1">
+        {title}<a href={imdb} class="imdb" target="_blank">IMDB 🎬</a>
+      </h1>
+
+      {
+        tags.map((tag) => {
+          return <span class="tag">{tag}</span>;
+        })
+      }
+      {
+        showType === "TV Show" || "Anime" ? (
+          hasEnded ? (
+            <span class="tag primary">Show Ended</span>
+          ) : (
+            <span class="tag primary">Show Ongoing</span>
+          )
+        ) : (
+          <span />
+        )
+      }
+
+      {
+        haveIFinishedWatching ? (
+          <span class="tag primary">Completed</span>
+        ) : (
+          <span class="tag primary">Still Watching</span>
+        )
+      }
 
       <div class="desc">
         <slot />
       </div>
     </div>
   </div>
+
+  <style>
+    .h1 {
+      margin-top: 0.5rem;
+    }
+
+    .image {
+      position: relative;
+    }
+
+    .image button {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      z-index: 1;
+      border-radius: 50vw;
+      padding: 0.75rem;
+      background-color: var(--accent-400);
+      border: none;
+      cursor: pointer;
+      aspect-ratio: 1 / 1;
+      mix-blend-mode: difference;
+      overflow: hidden;
+    }
+    .tag {
+      background-color: var(--accent-400);
+      font-size: 0.8rem;
+      color: var(--gray-100);
+      border-radius: 50vw;
+      padding: 0.5em 1em;
+      margin-inline: 0.25em;
+    }
+
+    .tag.primary {
+      background-color: var(--accent-700);
+      color: var(--gray-100);
+    }
+    .film-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      width: 100%;
+      height: calc(100vh - 5rem);
+      overflow: hidden;
+    }
+
+    .imdb {
+      display: inline;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--accent-400);
+      margin-left: 2rem;
+    }
+
+    img {
+      object-fit: contain;
+      overflow: hidden;
+      height: calc(100vh - 5rem);
+    }
+
+    .content {
+      padding: 1rem;
+    }
+
+    .desc {
+      margin-top: 2rem;
+      overflow-y: auto;
+      padding: 2rem;
+      height: calc(100vh - 15rem);
+      background-color: var(--gray-100);
+      max-width: 65rem;
+      /* margin-inline: auto; */
+    }
+  </style>
+
+  <style is:inline>
+    .desc h3 {
+      font-size: 2.5rem;
+    }
+
+    .desc h4 {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      background-color: var(--gray-300);
+      padding: 0.75rem 1rem 0.5rem;
+      border-radius: 1rem 1rem 0 0;
+      position: relative;
+      z-index: 1;
+      font-size: 1.25rem;
+    }
+
+    .desc ul {
+      background-color: var(--gray-300);
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 1rem 1rem;
+      margin-bottom: 1rem;
+      list-style: none;
+    }
+
+    .desc ul li {
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .desc h4::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: 2rem;
+      bottom: 0;
+      width: 3px;
+      height: 4rem;
+
+      background-color: var(--gray-300);
+    }
+
+    .desc h4:first-of-type::before {
+      display: none;
+    }
+  </style>
 </Layout>
-
-<style>
-  .film-grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    width: 100%;
-    height: calc(100vh - 5rem);
-  }
-
-  img {
-    object-fit: contain;
-    overflow: hidden;
-    height: calc(100vh - 5rem);
-  }
-
-  .content {
-    padding: 1rem;
-  }
-
-  .desc {
-    overflow: auto;
-    padding-block: 1rem;
-  }
-</style>

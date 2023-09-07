@@ -4,8 +4,12 @@ title: Game of Thrones
 art: got.jpg
 type: TV Show
 language: English
+tags: [Action, Violence]
 hasEnded: true
-haveIfinishedWatching: true
+haveIFinishedWatching: true
+isWishList: false
+finishedOn: 2019-05-19
+imdb: https://www.imdb.com/title/tt0944947
 ---
 
 ### My Thoughts
@@ -28,33 +32,3 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 #### 25th January 2021
 
 - What was that season finale?!
-
-#### 21st October 2022
-
-- Good show
-- Amazing Ending#### 25th January 2021
-
-#### 21st October 2022
-
-- Good show
-- Amazing Ending#### 25th January 2021
-
-#### 21st October 2022
-
-- Good show
-- Amazing Ending#### 25th January 2021
-
-#### 21st October 2022
-
-- Good show
-- Amazing Ending#### 25th January 2021
-
-#### 21st October 2022
-
-- Good show
-- Amazing Ending#### 25th January 2021
-
-#### 21st October 2022
-
-- Good show
-- Amazing Ending

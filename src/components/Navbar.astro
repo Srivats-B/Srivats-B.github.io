@@ -1,7 +1,6 @@
 ---
-
 const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1)
+const currentPath = pathname.slice(1);
 ---
 
 <nav>
@@ -9,13 +8,25 @@ const currentPath = pathname.slice(1)
     <div class="logo">Srivats</div>
   </a>
   <ul class="links">
-   
-    <li><a href="/" class={pathname === "/" ? "active" : ""} >Home</a></li>
-    <li><a href="/blog" class={currentPath.startsWith("blog") ? "active" : ""} >Blog</a></li>
-    <li><a href="/photography" class={currentPath.startsWith("photography") ? "active" : ""} >Photography</a></li>
-    <li><a href="/about" class={currentPath.startsWith("about") ? "active" : ""} >About</a></li>
-  </ul> 
-  
+    <li><a href="/" class={pathname === "/" ? "active" : ""}>Home</a></li>
+    <li>
+      <a href="/blog" class={currentPath.startsWith("blog") ? "active" : ""}
+        >Blog</a
+      >
+    </li>
+    <li>
+      <a
+        href="/photography"
+        class={currentPath.startsWith("photography") ? "active" : ""}
+        >Photography</a
+      >
+    </li>
+    <li>
+      <a href="/shows" class={currentPath.startsWith("shows") ? "active" : ""}
+        >Shows</a
+      >
+    </li>
+  </ul>
 </nav>
 
 <style>
@@ -45,8 +56,6 @@ const currentPath = pathname.slice(1)
     padding: 1rem;
     text-align: center;
     position: relative;
-    
-   
   }
 
   .links a {
@@ -55,24 +64,18 @@ const currentPath = pathname.slice(1)
     text-decoration: none;
     transition: color 250ms ease-in-out;
     font-size: 1.15rem;
-    
+
     margin: auto;
-    
-    
   }
 
-
-
- 
   .links a:hover::after,
   .links li > .active::after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: -15px;
     height: 7px;
     background-color: var(--accent-300);
-
   }
 </style>

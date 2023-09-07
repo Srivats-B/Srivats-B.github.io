@@ -5,20 +5,18 @@ import Layout from "../../layouts/Layout.astro";
 const allPrograms = await Astro.glob("./*.md");
 
 const anime = allPrograms.filter((prog) => prog.frontmatter.type === "Anime");
-const englishTV = allPrograms.filter(
-  (prog) =>
-    prog.frontmatter.type === "TV Show" &&
-    prog.frontmatter.language === "English"
+const tVShows = allPrograms.filter(
+  (prog) => prog.frontmatter.type === "TV Show"
 );
-const hindiTV = allPrograms.filter(
-  (prog) =>
-    prog.frontmatter.type === "TV Show" && prog.frontmatter.language === "Hindi"
+
+const animatedShows = allPrograms.filter(
+  (prog) => prog.frontmatter.type === "Cartoon"
 );
 ---
 
 <Layout title="My Favourite Films and TV Shows">
   <div class="container">
-    <h1 class="h1">My Facourite Films, TV Shows, and Anime</h1>
+    <h1 class="h1">My Favourite Shows</h1>
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam ut id
       aut? Obcaecati amet hic odit sapiente id quia distinctio totam dolores
@@ -26,35 +24,25 @@ const hindiTV = allPrograms.filter(
       Excepturi aut adipisci nam. Suscipit nihil laborum deleniti corporis
       itaque quia omnis iusto voluptates, placeat ratione maiores sint.
     </p>
+
     <h2 class="h2">TV Shows</h2>
-    <h3 class="h3">English</h3>
+
     <div class="card-container">
       {
-        englishTV.map((show) => {
+        tVShows.map((show) => {
           return (
             <FilmCard
               url={show.url}
               title={show.frontmatter.title}
               art={show.frontmatter.art}
+              tags={show.frontmatter.tags}
+              imdb={show.frontmatter.imdb}
             />
           );
         })
       }
     </div>
-    <h3 class="h3">Hindi</h3>
-    <div class="card-container">
-      {
-        hindiTV.map((show) => {
-          return (
-            <FilmCard
-              url={show.url}
-              title={show.frontmatter.title}
-              art={show.frontmatter.art}
-            />
-          );
-        })
-      }
-    </div>
+
     <h2 class="h2">Anime</h2>
     <div class="card-container">
       {
@@ -64,6 +52,25 @@ const hindiTV = allPrograms.filter(
               url={show.url}
               title={show.frontmatter.title}
               art={show.frontmatter.art}
+              tags={show.frontmatter.tags}
+              imdb={show.frontmatter.imdb}
+            />
+          );
+        })
+      }
+    </div>
+
+    <h2 class="h2">Animated Shows</h2>
+    <div class="card-container">
+      {
+        animatedShows.map((show) => {
+          return (
+            <FilmCard
+              url={show.url}
+              title={show.frontmatter.title}
+              art={show.frontmatter.art}
+              tags={show.frontmatter.tags}
+              imdb={show.frontmatter.imdb}
             />
           );
         })

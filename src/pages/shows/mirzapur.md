@@ -4,8 +4,12 @@ title: Mirzapur
 art: mirzapur.jpg
 type: TV Show
 language: Hindi
+tags: [Action, Violence]
 hasEnded: true
-haveIfinishedWatching: true
+haveIFinishedWatching: true
+isWishList: false
+finishedOn: 2023-05-01
+imdb: https://www.imdb.com/title/tt6473300
 ---
 
 ### My Thoughts
@@ -32,35 +36,42 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 #### 21st October 2022
 
 - Good show
-- Amazing Ending#### 25th January 2021
+- Amazing Ending 25th January 2021
+- What was that season finale?!
+
+#### 21st October 2022
+
+- Good show
+- Amazing Ending
+
+#### 25th January 2021
 
 - What was that season finale?!
 
 #### 21st October 2022
 
 - Good show
-- Amazing Ending#### 25th January 2021
+- Amazing Ending
+
+#### 25th January 2021
 
 - What was that season finale?!
 
 #### 21st October 2022
 
 - Good show
-- Amazing Ending#### 25th January 2021
+- Amazing Ending
+
+#### 25th January 2021
 
 - What was that season finale?!
 
 #### 21st October 2022
 
 - Good show
-- Amazing Ending#### 25th January 2021
+- Amazing Ending
 
-- What was that season finale?!
-
-#### 21st October 2022
-
-- Good show
-- Amazing Ending#### 25th January 2021
+#### 25th January 2021
 
 - What was that season finale?!
 
