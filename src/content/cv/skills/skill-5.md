@@ -2,6 +2,8 @@
 title: Extra-Curricular Activities
 ---
 
-- Volleyball
-- Karaoke
-- Gaming
+- Placement Committee
+- Employee Experience Committee
+- Social Event Organizer
+- Management Fest Organizer
+- Founded Quiz Club "Foghlaim"

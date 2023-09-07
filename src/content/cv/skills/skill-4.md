@@ -2,8 +2,7 @@
 title: Certifications
 ---
 
-- Diplomas in Alison Courses
-- NISM Certified ‘Fundamentals of
-  Stock Exchange’
-- 4 weeks as an intern in B.S.
-  Badriprasad and Company
+- NISM certified ‘Fundamentals of Stock Exchange’
+- ‘The Complete Investment Banking Course 2023’ (Ongoing)
+- ‘Microsoft Power BI Desktop for Business Intelligence’ (Ongoing)
+- Other Alison Courses
