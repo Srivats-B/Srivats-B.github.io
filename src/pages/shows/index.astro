@@ -16,14 +16,17 @@ const animatedShows = allPrograms.filter(
 
 <Layout title="My Favourite Films and TV Shows">
   <div class="container-wide">
-    <h1 class="h1">My Favourite Shows</h1>
-    <p class="intro-text">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam ut id
-      aut? Obcaecati amet hic odit sapiente id quia distinctio totam dolores
-      voluptate cupiditate ipsa ex minima, enim molestias, perspiciatis qui at?
-      Excepturi aut adipisci nam. Suscipit nihil laborum deleniti corporis
-      itaque quia omnis iusto voluptates, placeat ratione maiores sint.
-    </p>
+    <div class="container">
+      <h1 class="h1">My Favourite Shows</h1>
+      <p class="intro-text">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam ut
+        id aut? Obcaecati amet hic odit sapiente id quia distinctio totam
+        dolores voluptate cupiditate ipsa ex minima, enim molestias,
+        perspiciatis qui at? Excepturi aut adipisci nam. Suscipit nihil laborum
+        deleniti corporis itaque quia omnis iusto voluptates, placeat ratione
+        maiores sint.
+      </p>
+    </div>
 
     <h2 class="h2 text-c">TV Shows</h2>
 
@@ -87,6 +90,10 @@ const animatedShows = allPrograms.filter(
     }
     .intro-text {
       max-width: 80ch;
+    }
+
+    .h2 {
+      margin-bottom: 0.75rem;
     }
   </style>
 </Layout>
