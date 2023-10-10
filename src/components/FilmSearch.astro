@@ -1,0 +1,14 @@
+---
+const { searchField } = Astro.props;
+---
+
+<div class="search-box">
+  <label for={searchField}>Search for a TV Show</label>
+  <input
+    type="search"
+    name={searchField}
+    class="search"
+    id={searchField}
+    placeholder="Start Typing"
+  />
+</div>

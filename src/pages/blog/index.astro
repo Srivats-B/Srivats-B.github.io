@@ -1,11 +1,29 @@
 ---
-import UnderConstruction from "@components/UnderConstruction.astro";
+import BlogCard from "@components/blog/BlogCard.astro";
+import BlogHero from "../../components/blog/BlogHero.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="My Blog">
   <div class="container">
     <h1 class="h1">My Blog!</h1>
-    <UnderConstruction />
+    <p>
+      Welcome to my blog! Stories, excerpts, poems, undefined events, feelings
+      and abstract thoughts that I would like penned are on here. I think of
+      myself to be quite simple and yet, my thoughts complex. As such, putting
+      pen to paper might help me understand myself better.
+    </p>
+    <p>
+      There are also stories of others that I resonate with. Compiled with my
+      writings are such - all enclosed in this blog. Enjoy!
+    </p>
+    <BlogHero
+      title="Some title goes here"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices justo sapien. Aenean sit amet mauris dui. Quisque vitae condimentum dolor. Aliquam accumsan lorem non sapien fermentum rutrum."
+      banner="/blog/blog-1.jpg"
+      url=""
+    />
+    <h2 class="h2">Other Articles</h2>
+    <BlogCard />
   </div>
 </Layout>

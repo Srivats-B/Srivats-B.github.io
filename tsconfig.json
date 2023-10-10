@@ -5,6 +5,7 @@
     "paths": {
       "@content/*": ["src/content/*"],
       "@components/*": ["src/components/*"]
-    }
+    },
+    "strictNullChecks": true
   }
 }

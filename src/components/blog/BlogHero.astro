@@ -1,0 +1,94 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  banner: string;
+  url: string;
+}
+
+const { title, description, banner, url } = Astro.props;
+---
+
+<div class="latest-blog">
+  <div class="top">
+    <p class="eyebrow">Latest Article</p>
+    <h2>{title}</h2>
+    <p class="description">{description}</p>
+  </div>
+  <a href={url}>Read Now!</a>
+
+  <img src={banner} alt="" />
+</div>
+
+<style>
+  .latest-blog {
+    position: relative;
+    height: 50vh;
+
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+
+  .latest-blog::after {
+    content: "";
+    background-color: black;
+    opacity: 0%;
+    inset: 0;
+    position: absolute;
+    z-index: 1;
+
+    transition: all 250ms ease-in-out;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .top {
+    padding: 2rem;
+    background-image: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    position: absolute;
+
+    z-index: 2;
+  }
+
+  h2 {
+    color: white;
+    font-size: 4rem;
+  }
+
+  .eyebrow,
+  p {
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .description {
+    margin-top: 1rem;
+    line-height: 1.4;
+  }
+
+  .latest-blog:hover.latest-blog::after {
+    opacity: 50%;
+  }
+
+  a {
+    position: absolute;
+    right: 3rem;
+    border-radius: 0.5rem;
+    bottom: 3rem;
+    padding: 0.75rem 2rem;
+    background-color: white;
+    color: var(--gray-700);
+    z-index: 2;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 700;
+  }
+</style>

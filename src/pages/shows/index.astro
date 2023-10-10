@@ -1,6 +1,7 @@
 ---
 import FilmCard from "@components/FilmCard.astro";
 import Layout from "../../layouts/Layout.astro";
+import FilmSearch from "@components/FilmSearch.astro";
 
 const allPrograms = await Astro.glob("./*.md");
 
@@ -29,7 +30,7 @@ const animatedShows = allPrograms.filter(
     </div>
 
     <h2 class="h2 text-c">TV Shows</h2>
-
+    <!-- <FilmSearch searchField="tv-search" /> -->
     <div class="card-container">
       {
         tVShows.map((show) => {
@@ -40,6 +41,7 @@ const animatedShows = allPrograms.filter(
               art={show.frontmatter.art}
               tags={show.frontmatter.tags}
               imdb={show.frontmatter.imdb}
+              type={show.frontmatter.type}
             />
           );
         })
@@ -80,20 +82,27 @@ const animatedShows = allPrograms.filter(
       }
     </div>
   </div>
-
-  <style>
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .intro-text {
-      max-width: 80ch;
-    }
-
-    .h2 {
-      margin-bottom: 0.75rem;
-    }
-  </style>
 </Layout>
+<style>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .intro-text {
+    max-width: 80ch;
+  }
+
+  .h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+<script>
+  const tvSearch = document.querySelector("#tv-search");
+  const tvList = document.querySelectorAll("[data-name]");
+</script>

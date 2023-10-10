@@ -1,0 +1,82 @@
+---
+const { title, description, author, date, tags, banner, url } = Astro.props;
+---
+
+<div class="card-container">
+  <div class="card">
+    <img src="/blog/blog-1.jpg" alt="" />
+    <div class="card-content">
+      <h3 class="h4">Some Title Goes Here</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+        voluptates quisquam eligendi commodi blanditiis nobis nostrum tenetur
+        cumque nulla doloremque.
+      </p>
+      <a href="#">Read this article</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="/blog/blog-1.jpg" alt="" />
+    <div class="card-content">
+      <h3 class="h4">Some Title Goes Here</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+        voluptates quisquam eligendi commodi blanditiis nobis nostrum tenetur
+        cumque nulla doloremque.
+      </p>
+      <a href="#">Read this article</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="/blog/blog-1.jpg" alt="" />
+    <div class="card-content">
+      <h3 class="h4">Some Title Goes Here</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+        voluptates quisquam eligendi commodi blanditiis nobis nostrum tenetur
+        cumque nulla doloremque.
+      </p>
+      <a href="#">Read this article</a>
+    </div>
+  </div>
+  <div class="card">
+    <img src="/blog/blog-1.jpg" alt="" />
+    <div class="card-content">
+      <h3 class="h4">Some Title Goes Here</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
+        voluptates quisquam eligendi commodi blanditiis nobis nostrum tenetur
+        cumque nulla doloremque.
+      </p>
+      <a href="#">Read this article</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  img {
+    position: absolute;
+    z-index: 2;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .card {
+    border-radius: 1rem;
+    overflow: hidden;
+    outline: 1px solid var(--gray-100);
+    outline-offset: -2px;
+    z-index: 1;
+    position: relative;
+  }
+  .card-content {
+    padding: 1rem;
+    padding-top: 10rem;
+  }
+</style>

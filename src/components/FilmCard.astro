@@ -1,10 +1,10 @@
 ---
-const { url, title, art } = Astro.props;
+const { url, title, art, type } = Astro.props;
 ---
 
-<div class="card">
+<div class="card" data-name={title.toLowerCase()} data-type={type}>
   <a href={url}>
-    <img src={`/films/${art}`} alt="" transition:name={`${art}`} />
+    <img src={`/films/${art}`} alt="" transition:name={`morph-${art}`} />
     <h3 class="h4">
       {title}
     </h3>

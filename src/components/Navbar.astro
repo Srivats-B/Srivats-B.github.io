@@ -27,18 +27,13 @@ const currentPath = pathname.slice(1);
       >
     </li>
   </ul>
+  <button class="btn"><div class="hamburger"></div></button>
 </nav>
 
 <style>
   nav {
-    position: fixed;
-    z-index: 900;
-    top: 0;
-    left: 0;
-    right: 0;
     display: flex;
     align-items: center;
-    /* max-width: 85rem; */
     margin-inline: auto;
     justify-content: space-between;
     height: 5rem;
@@ -77,4 +72,62 @@ const currentPath = pathname.slice(1);
     height: 7px;
     background-color: var(--accent-300);
   }
+  button {
+    display: none;
+  }
+  @media only screen and (max-width: 70rem) {
+    ul {
+      flex-direction: column;
+      translate: 0 -100%;
+    }
+
+    button {
+      display: block;
+      /* padding: 1rem; */
+      cursor: pointer;
+      margin: 0;
+      height: 45px;
+      background: transparent;
+      border: none;
+    }
+
+    .hamburger {
+      position: relative;
+    }
+    .hamburger::after,
+    .hamburger::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+    .hamburger,
+    .hamburger::after,
+    .hamburger::before {
+      height: 3px;
+      width: 30px;
+      background-color: red;
+    }
+
+    .hamburger::before {
+      bottom: 10px;
+    }
+    .hamburger::after {
+      top: 10px;
+    }
+
+    .open ul {
+      translate: 0 0;
+    }
+  }
 </style>
+
+<script>
+  const navbar = document.querySelector("nav");
+  const hamburgerBtn = document.querySelector(".btn");
+
+  hamburgerBtn.addEventListener("click", () => {
+    navbar.classList.toggle(".open");
+    console.log("clicked");
+  });
+</script>
