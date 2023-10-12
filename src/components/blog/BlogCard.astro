@@ -1,70 +1,41 @@
 ---
-const { title, description, author, date, tags, banner, url } = Astro.props;
+const { title, description, author, date, tags, banner, url, bannerAlt } =
+  Astro.props;
+
+import { formatDate, slugify } from "src/js/utils";
 ---
 
-<div class="card-container">
-  <div class="card">
-    <img src="/blog/blog-1.jpg" alt="" />
-    <div class="card-content">
-      <h3 class="h4">Some Title Goes Here</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-        voluptates quisquam eligendi commodi blanditiis nobis nostrum tenetur
-        cumque nulla doloremque.
-      </p>
-      <a href="#">Read this article</a>
+<div class="card">
+  <img
+    src={`/blog-images/${banner}`}
+    alt={bannerAlt}
+    transition:name={`morph-${slugify(banner)}`}
+  />
+  <div class="card-content">
+    <h3 class="h4" transition:name={title}>{title}</h3>
+    <div class="byline">
+      <p>By {author}</p>
+      <p>On {formatDate(date)}</p>
     </div>
-  </div>
-  <div class="card">
-    <img src="/blog/blog-1.jpg" alt="" />
-    <div class="card-content">
-      <h3 class="h4">Some Title Goes Here</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-        voluptates quisquam eligendi commodi blanditiis nobis nostrum tenetur
-        cumque nulla doloremque.
+
+    <div class="desc-text">
+      <p class="description">
+        {description}
       </p>
-      <a href="#">Read this article</a>
+      <p class="tooltip">{description}</p>
     </div>
-  </div>
-  <div class="card">
-    <img src="/blog/blog-1.jpg" alt="" />
-    <div class="card-content">
-      <h3 class="h4">Some Title Goes Here</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-        voluptates quisquam eligendi commodi blanditiis nobis nostrum tenetur
-        cumque nulla doloremque.
-      </p>
-      <a href="#">Read this article</a>
-    </div>
-  </div>
-  <div class="card">
-    <img src="/blog/blog-1.jpg" alt="" />
-    <div class="card-content">
-      <h3 class="h4">Some Title Goes Here</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum
-        voluptates quisquam eligendi commodi blanditiis nobis nostrum tenetur
-        cumque nulla doloremque.
-      </p>
-      <a href="#">Read this article</a>
-    </div>
+    <a class="card-link" href={url}>Read this article</a>
   </div>
 </div>
 
 <style>
-  .card-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
   img {
     position: absolute;
     z-index: 2;
     height: 10rem;
     object-fit: cover;
     border-radius: 1rem;
+    transition: all 250ms ease-in-out;
   }
 
   .card {
@@ -74,9 +45,74 @@ const { title, description, author, date, tags, banner, url } = Astro.props;
     outline-offset: -2px;
     z-index: 1;
     position: relative;
+    transition: all 250ms ease-in-out;
+    min-height: 24rem;
   }
+
+  .card:hover {
+    box-shadow: 10px 10px 10px 0px var(--gray-100);
+  }
+
   .card-content {
     padding: 1rem;
     padding-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .card-link {
+    text-align: center;
+    display: block;
+    padding: 0.5rem;
+    color: var(--accent-400);
+    border: 1px solid var(--accent-400);
+    text-decoration: none;
+    transition: all 250ms ease-in-out;
+    margin-top: auto;
+  }
+
+  .card-link:hover {
+    background-color: var(--accent-700);
+    color: var(--gray-100);
+  }
+  .byline {
+    padding-block: 1rem;
+  }
+  .byline p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    overflow: hidden;
+    display: -webkit-box;
+    font-size: 1.2rem;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    padding-block: 0.15rem;
+  }
+
+  .desc-text {
+    position: relative;
+  }
+
+  .tooltip {
+    visibility: hidden;
+    width: 100%;
+    background-color: white;
+    color: var(--gray-700)
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    font-size: 0.9rem;
+  }
+
+  .desc-text:hover .tooltip {
+    visibility: visible;
   }
 </style>

@@ -1,0 +1,117 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+const { title, banner, author, date, tags } = frontmatter;
+
+import { formatDate, slugify } from "src/js/utils";
+---
+
+<Layout title={title}>
+  <div class="container blog">
+    <h1 transition:name={title}>{title}</h1>
+    <p class="byline">
+      By <span><a href="">{author}</a></span>
+      <span>&#x2022</span> On <span>{formatDate(date)}</span>
+    </p>
+    <div class="tags">
+      {
+        tags.map((tag) => {
+          return <a href="">{tag}</a>;
+        })
+      }
+    </div>
+    <img
+      src={`/blog-images/${banner}`}
+      alt=""
+      transition:name={`morph-${slugify(banner)}`}
+    />
+    <div class="blog-body">
+      <slot />
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  .blog h1 {
+    font-size: 5rem;
+    margin-top: 0.8em;
+  }
+
+  .blog h2 {
+    font-size: 3rem;
+    margin-top: 0.8em;
+  }
+
+  .blog h3 {
+    font-size: 2rem;
+    margin-top: 0.8em;
+  }
+
+  .blog h4 {
+    font-size: 1.75rem;
+    margin-top: 0.8em;
+  }
+  .blog-body {
+    font-size: 1.25rem;
+    margin-bottom: 1em;
+  }
+  /* .blog-body > p:first-of-type::first-letter {
+    initial-letter: 3;
+    color: var(--accent-400);
+    margin-right: 0.5rem;
+  } */
+
+  .blog-body ul,
+  .blog-body ol {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-body li {
+    padding-left: 0.5rem;
+  }
+</style>
+
+<style>
+  .byline {
+    font-size: 1rem;
+    background-color: white;
+
+    z-index: 3;
+  }
+
+  .byline span {
+    font-style: italic;
+    margin-right: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .byline a {
+    color: var(--accent-400);
+  }
+
+  .tags {
+    margin-bottom: 2rem;
+  }
+
+  .tags a {
+    display: inline-block;
+    background-color: var(--accent-400);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5rem;
+    margin-right: 1rem;
+    text-decoration: none;
+  }
+
+  .blog-body {
+    margin-block: 3rem;
+  }
+
+  @media only screen and (max-width: 50rem) {
+    .byline span {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>

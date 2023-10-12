@@ -2,6 +2,12 @@
 import BlogCard from "@components/blog/BlogCard.astro";
 import BlogHero from "../../components/blog/BlogHero.astro";
 import Layout from "../../layouts/Layout.astro";
+import { formatBlogPosts } from "src/js/utils";
+
+const allPosts = await Astro.glob("./*.md");
+const formattedPosts = formatBlogPosts(allPosts);
+
+const firstPost = formattedPosts.shift();
 ---
 
 <Layout title="My Blog">
@@ -18,12 +24,50 @@ import Layout from "../../layouts/Layout.astro";
       writings are such - all enclosed in this blog. Enjoy!
     </p>
     <BlogHero
-      title="Some title goes here"
-      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ultrices justo sapien. Aenean sit amet mauris dui. Quisque vitae condimentum dolor. Aliquam accumsan lorem non sapien fermentum rutrum."
-      banner="/blog/blog-1.jpg"
-      url=""
+      title={firstPost.frontmatter.title}
+      description={firstPost.frontmatter.description}
+      author={firstPost.frontmatter.author}
+      date={firstPost.frontmatter.date}
+      banner={firstPost.frontmatter.banner}
+      url={firstPost.url}
     />
     <h2 class="h2">Other Articles</h2>
-    <BlogCard />
+    <div class="card-container">
+      {
+        formattedPosts.map((post) => {
+          return (
+            <BlogCard
+              title={post.frontmatter.title}
+              author={post.frontmatter.author}
+              date={post.frontmatter.date}
+              banner={post.frontmatter.banner}
+              bannerAlt={post.frontmatter.bannerAlt}
+              description={post.frontmatter.description}
+              url={post.url}
+            />
+          );
+        })
+      }
+    </div>
   </div>
 </Layout>
+
+<style>
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-block: 2rem;
+  }
+
+  @media only screen and (max-width: 60rem) {
+    .card-container {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media only screen and (max-width: 40rem) {
+    .card-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -4,9 +4,7 @@ const currentPath = pathname.slice(1);
 ---
 
 <nav>
-  <a href="/">
-    <div class="logo">Srivats</div>
-  </a>
+  <a class="logo" href="/"> Srivats</a>
   <ul class="links">
     <li><a href="/" class={pathname === "/" ? "active" : ""}>Home</a></li>
     <li>
@@ -39,6 +37,7 @@ const currentPath = pathname.slice(1);
     height: 5rem;
     padding-inline: 1rem;
     background-color: var(--accent-700);
+    z-index: 2;
   }
   ul {
     display: flex;
@@ -75,10 +74,45 @@ const currentPath = pathname.slice(1);
   button {
     display: none;
   }
+
+  .logo {
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--gray-100);
+    font-size: 2rem;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .logo::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    bottom: -3px;
+    width: 100%;
+    background-color: white;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 250ms ease-in-out;
+  }
+
+  .logo:hover.logo::after {
+    transform: scaleX(1);
+  }
   @media only screen and (max-width: 70rem) {
+    nav {
+      z-index: 900;
+    }
     ul {
       flex-direction: column;
-      translate: 0 -100%;
+      translate: 150% 19rem;
+      background-color: white;
+      transition: all 250ms ease-in-out;
+      box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.322);
+      width: 100vw;
+      z-index: 800;
+      height: 50vh;
+      display: none;
     }
 
     button {
@@ -106,7 +140,7 @@ const currentPath = pathname.slice(1);
     .hamburger::before {
       height: 3px;
       width: 30px;
-      background-color: red;
+      background-color: white;
     }
 
     .hamburger::before {
@@ -116,18 +150,28 @@ const currentPath = pathname.slice(1);
       top: 10px;
     }
 
-    .open ul {
-      translate: 0 0;
+    .links a {
+      background-color: white;
+      font-weight: 700;
+      color: var(--accent-700);
+      padding: 1rem;
+    }
+
+    nav.open > ul {
+      translate: 0 19rem;
+      display: flex;
     }
   }
 </style>
 
-<script>
+<script is:inline>
+if (!window.SomeGlobal) {
   const navbar = document.querySelector("nav");
   const hamburgerBtn = document.querySelector(".btn");
 
   hamburgerBtn.addEventListener("click", () => {
-    navbar.classList.toggle(".open");
+    navbar.classList.toggle("open");
     console.log("clicked");
   });
+}
 </script>
